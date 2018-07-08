@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1531012110 source:c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\guia2ej4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"tipos.h"
+
+1531012136 c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\guia2ej4\tipos.h
+	<stdio.h>
+	<stdlib.h>
+
