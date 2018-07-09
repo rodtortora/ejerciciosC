@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1514140574 source:c:\dev\facultad\segundo ano\estructura de datos\piladinamico\main.c
+	<stdio.h>
+	<stdlib.h>
+
