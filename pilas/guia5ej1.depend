@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1531095507 source:c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\guia5ej1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
+
+1531094826 c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\guia5ej1\pila.h
+
+1531096052 source:c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\guia5ej1\pila.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
+

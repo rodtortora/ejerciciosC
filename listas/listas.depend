@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1531099901 source:c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\listas\listas.c
+
+1531103954 source:c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\listas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
