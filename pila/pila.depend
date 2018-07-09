@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1527717642 source:c:\dev\facultad\segundo ano\estructura de datos\pila\pila.c
+	"pila.h"
+
+1527717739 source:c:\dev\facultad\segundo ano\estructura de datos\pila\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
+
+1527719023 c:\dev\facultad\segundo ano\estructura de datos\pila\pila.h
+

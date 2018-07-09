@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1528932073 source:c:\dev\facultad\segundo ano\estructura de datos\guialistasej1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
