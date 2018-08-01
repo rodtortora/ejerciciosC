@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1531346870 source:c:\users\pm200\desktop\parcial\parcial\gimnasio.c
+
+1531346389 source:c:\users\pm200\desktop\parcial\parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1531346861 c:\users\pm200\desktop\parcial\parcial\gimnasio.h
+
+1531354504 source:c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\parcial1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

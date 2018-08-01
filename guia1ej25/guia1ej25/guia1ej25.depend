@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1533087456 source:c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\guia1ej25\guia1ej25\main.c
+	<stdio.h>
+	<stdlib.h>
+

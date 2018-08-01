@@ -21,37 +21,94 @@ typedef struct nodo *TLista;
 
 void abrirFactura(TLista *TL, int nroFactura);
 void insertarSublista(TLista *TL, int nroArt, float precioArt, int cantArt);
+void recorrerListaConSublista(TLista TL);
 
 int main()
 
 {
     FILE *archEntrada, *archSalida;
+    int nroFactura;
+    char nombreCliente[30];
+    char descripcionArt[20];
+    float precioArt;
+    int cantArt;
+    int nroArt;
+    char indice;
+    TLista TL;
+    TL = NULL;
     archEntrada = fopen("facturas.txt","r");
     archSalida = fopen("facturasS.dat","wb");
     if (archEntrada == NULL) {
-        return 1;
+        return 10;
     }
     while (!feof(archEntrada)) {
-        char indice;
-        scanf("%c",&indice);
-        if (indice == F) {
-            scanf("%12d",&nroFactura);
-            scanf("%30s",nombreCliente);
+        fscanf(archEntrada,"%c",&indice);
+        if (indice == 'F') {
+            fscanf(archEntrada,"%12d",&nroFactura);
+            fscanf(archEntrada,"%30s",nombreCliente);
+
             abrirFactura(&TL,nroFactura);
+
         } else {
-            scanf("%6d",&nroArt);
-            scanf("%20s",descripcionArt);
-            scanf("%f7.2",precioArt);
-            scanf("%5d",cantArt);
+            fscanf(archEntrada,"%6d",&nroArt);
+
+            fscanf(archEntrada,"%20s",descripcionArt);
+            fscanf(archEntrada,"%f7.2",&precioArt);
+            fscanf(archEntrada,"%5d",&cantArt);
+
             insertarSublista(&TL,nroArt,precioArt,cantArt);
         }
     }
-    fprintf("%c",",indice);
+    recorrerListaConSublista(TL);
 }
 
 void abrirFactura(TLista *TL, int nroFactura) {
-    TLista aux;
+    TLista aux, nuevo;
     aux = *TL;
+    nuevo = (TLista)malloc (sizeof(nodo));
+    nuevo->cantArt = 0;
+    nuevo->importeTotal = 0;
+    nuevo->nroFactura = nroFactura;
+    nuevo->sig = aux;
+    nuevo->sub = NULL;
+    *TL = nuevo;
+}
 
+void insertarSublista(TLista *TL, int nroArt, float precioArt, int cantArt) {
+    TLista aux;
+    TSubLista subAux, nuevoSub;
 
+    aux = *TL;
+    subAux = aux->sub;
+    printf("%d",aux->cantArt);
+
+    nuevoSub = (TSubLista)malloc(sizeof(nodito));
+
+    nuevoSub->cantArt = cantArt;
+
+    nuevoSub->precioArt = precioArt;
+    nuevoSub->codArt = nroArt;
+    aux->sub = NULL;
+    nuevoSub->sig = NULL;
+    nuevoSub->sig = subAux;
+    aux->sub = nuevoSub;
+    aux->cantArt += nuevoSub->cantArt;
+    aux->importeTotal += nuevoSub->precioArt;
+}
+
+void recorrerListaConSublista(TLista TL) {
+    TLista aux;
+    TSubLista auxSublista;
+    aux = TL;
+    auxSublista = aux->sub;
+    while (aux != NULL) {
+        printf("\nNro Factura: %d\n", aux->nroFactura);
+        printf("Importe total %f\n", aux->importeTotal);
+        printf("Total de articulos %d\n", aux->cantArt);
+        while (auxSublista != NULL) {
+            printf("Articulo: %d  ",auxSublista->codArt);
+            auxSublista = auxSublista -> sig;
+        }
+        aux = aux->sig;
+    }
 }
