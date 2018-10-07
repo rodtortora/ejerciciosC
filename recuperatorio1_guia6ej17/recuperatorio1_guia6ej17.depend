@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1533422050 source:c:\users\rodrigo\desktop\facultad\segundo año\estructura de datos en c\git\ejerciciosc\recuperatorio1_guia6ej17\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

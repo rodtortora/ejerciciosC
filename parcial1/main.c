@@ -27,6 +27,7 @@ void insertarActividad(TLista *TL, int codigo, char* nombre, int legajo, int cap
     nuevo->capMax = capMax;
     nuevo->cantInsc = cantInsc;
     nuevo->sub = NULL;
+    ant = NULL;
     while (act != NULL && codigo > act->codigo){
         ant = act;
         act = act->sig;
@@ -73,14 +74,14 @@ void insertarSocioAct(TLista *TL, int NroSocio,int codAct) {
 }
 
 
-void crearMatriz(TLista TL, int *matrizActividades) {
+void crearMatriz(TLista TL, int matrizActividades[40][300]) {
     TLista act;
     TSubLista actsub;
     act = TL;
     while (act != NULL) {
         actsub = act->sub;
         while (actsub != NULL) {
-            //matrizActividades[act->codigo][actsub->nroSocio] = 1;
+            matrizActividades[act->codigo][actsub->nroSocio] = 1;
             actsub = actsub -> sig;
         }
         act = act->sig;
@@ -114,24 +115,21 @@ int main()
     TLista L;
     L=NULL;
 
-    //crearMatriz(L,matrizActividades);
+    crearMatriz(L,matrizActividades);
     archCarga = fopen("CARGAACTUAL.TXT","r");
     if (archCarga != NULL) {
         fscanf(archCarga,"%d %s %d %d %d",&codActiv,nombreActiv,&legajo,&capMax,&cantInscr);
-        printf("Insercion actividad xd: %d %s %d %d %d\n",codActiv,nombreActiv,legajo,capMax,cantInscr);
         while(!feof(archCarga)){
             insertarActividad(&L,codActiv,nombreActiv,legajo,capMax,cantInscr);
             for (i=0;i<cantInscr;i++) {
                 fscanf(archCarga,"%d",&NroSocInscr);
                 insertarSocioAct(&L,NroSocInscr,codActiv);
-                printf("insercion socio jaja: %d, %d\n",NroSocInscr,codActiv);
             }
             fscanf(archCarga,"%d %s %d %d %d",&codActiv,nombreActiv,&legajo,&capMax,&cantInscr);
-            printf("Insercion actividad 2 xd: %d %s %d %d %d\n",codActiv,nombreActiv,legajo,capMax,cantInscr);
         }
 
     } else {
-        printf("problema lectura archibo XD");
+        printf("problema lectura archivo");
     }
 
     archInscr = fopen("INSCRIPTOS.TXT","r");
