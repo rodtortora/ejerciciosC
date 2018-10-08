@@ -1,0 +1,60 @@
+Ej 4 - Realizar funciones para obtener el grado de Entrada, el grado de Salida y el grado de un
+Vértice; para un digrafo almacenado en:
+a.- una Matriz de Adyacencia
+b.- una Lista de Adyacencia
+
+Ej 5 – Idem ejercicio anterior para un grafo almacenado en:
+a.- una Matriz de Adyacencia
+b.- una Lista de Adyacencia
+c.- una Multilista
+d.- el triángulo superior de una Matriz de Adyacencia
+
+c)
+
+int grV(int vertice, int Mat[][], int N) {
+	int grado = 0;
+	int i,j;
+	for (i=0;i<=vertice;i++) {
+		if (Mat[i][vertice] != 0) {
+			grado++;
+		}
+	}
+	for (j=vertice;j<=N;j++) {
+		if (Mat[vertice][j] != 0) {
+			grado++;
+		}
+	}	
+	return grado;
+}
+
+
+b)
+
+int grV (int vertice, int Mat[][], int N) {
+	int grado = 0;
+	int j;
+	for (j=0;j<=N;j++) {
+		if (Mat[vertice][j] == 1)
+			grado++;
+	}
+	return grado;
+}
+
+a)
+
+Typedef struct nodo {
+	int V;
+	struct nodo *sig;
+} nodo;
+Typedef struct nodo *TLista;
+
+int grV (int vertice, int V[]) {
+	TLista aux;
+	int grado = 0;
+	aux = V[vertice];
+	while (aux != NULL) {
+		grado++;
+		aux = aux->sig;
+	}
+	return grado;	
+}
