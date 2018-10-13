@@ -81,7 +81,7 @@ void recorrerDoble(TListaD *LD) {
 
 }
 
-void eliminarVarios(TListaD *LD) {
+/*void eliminarVarios(TListaD *LD) {
     pNodoD act;
     if (LD->pri != NULL) {
         act = LD->pri->sig;
@@ -102,7 +102,7 @@ void eliminarVarios(TListaD *LD) {
             }
         }
     }
-}
+}*/
 
 int main()
 {

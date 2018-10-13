@@ -9,17 +9,17 @@ b.- una Lista de Adyacencia
 c.- una Multilista
 d.- el triángulo superior de una Matriz de Adyacencia
 
-c)
+d)
 
 int grV(int vertice, int Mat[][], int N) {
 	int grado = 0;
 	int i,j;
-	for (i=0;i<=vertice;i++) {
+	for (i=0;i<vertice;i++) {
 		if (Mat[i][vertice] != 0) {
 			grado++;
 		}
 	}
-	for (j=vertice;j<=N;j++) {
+	for (j=vertice;j<N;j++) {
 		if (Mat[vertice][j] != 0) {
 			grado++;
 		}
@@ -27,20 +27,43 @@ int grV(int vertice, int Mat[][], int N) {
 	return grado;
 }
 
+c)
 
-b)
+Typedef struct nodo {
+    int i,j, costo;
+    struct nodo *sigi;
+    struct nodo *sigj;
+} nodo;
+Typedef struct nodo *TMLista;
+
+int grV (TMLista LM, int V[], int pos) {
+    int grado = 0;
+    TMLista aux;
+    aux = V[pos];
+    while (aux != NULL) {
+        grado++;
+        if (aux -> i == pos)
+            aux = aux -> sigi;
+        else
+            aux = aux -> sigj;
+    }
+    return grado;
+}
+
+
+a)
 
 int grV (int vertice, int Mat[][], int N) {
 	int grado = 0;
 	int j;
-	for (j=0;j<=N;j++) {
+	for (j=0;j<N;j++) {
 		if (Mat[vertice][j] == 1)
 			grado++;
 	}
 	return grado;
 }
 
-a)
+b)
 
 Typedef struct nodo {
 	int V;
@@ -57,4 +80,36 @@ int grV (int vertice, int V[]) {
 		aux = aux->sig;
 	}
 	return grado;	
+}
+
+Ej 6 - Realizar funciones que permitan agregar un arco y eliminar un arco; para un grafo almacenado
+en:
+a.- una Matriz de Adyacencia
+b.- una Lista de Adyacencia
+c.- una Multilista
+
+a)
+void agregar(int vi, int vj, int mat[][]) {
+    Mat[vi][vj] = 1;
+    Mat[vj][vi] = 1;
+}
+
+b)
+Typedef struct nodo {
+    int v, costo;
+    struct nodo *sig;
+}
+typedef struct nodo *TLista;
+
+void agregar(int costo, int vi, int vj, int V[]) {
+    TLista aux, nuevo;
+    nuevo->costo = costo;
+    nuevo = (TLista)malloc(sizeof(nodo));
+    nuevo->sig = V[vi];
+    V[vi] = nuevo;
+    if (vj != vi) {
+        nuevo = (TLista)malloc(sizeof(nodo));
+
+    }
+
 }
