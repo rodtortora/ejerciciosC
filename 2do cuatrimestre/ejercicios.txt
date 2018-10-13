@@ -133,3 +133,135 @@ void agregar(int costo, int V[], int vi, int vj) {
 	V[vj] = nuevo;
 }
 
+Ej 7 – Dado un digrafo almacenado en una Matriz de Adyacencia, obtener de forma recursiva el
+grado de entrada de cada vértice y almacenarlo en un arreglo.
+
+void grE(int Mat[][], int i, int j, int Vec[], int N) {
+	if (j<N) {
+		if (i<N) {
+			if (Mat[i][j] == 1) {
+				Vec[j]++;			
+			}
+			grE(Mat[][], i+1, j, Vec[], N);
+		} else {
+			grE(Mat[][], 0, j+1, Vec[], N);
+		}
+
+	}
+	
+}
+
+Ej 11 - Realizar funciones para determinar si en un grafo G el vértice vi es adyacente a vj. Suponer
+G almacenado en:
+a.- una Matriz de Adyacencia
+b.- una Lista de Adyacencia
+c.- una Multilista
+
+a)
+
+int esAdyacente(int i, int j, int Mat[][]) {	
+	return Mat[i][j];	
+}
+
+b)
+
+Typedef struct nodo {
+	int costo, vertice;
+	struct nodo *sig;
+} nodo;
+Typedef struct nodo *TLista;
+int esAdyacente(int i, int j, int V[]) {
+	TLista aux;
+	aux = V[i];
+	while (aux != null && aux->vertice != j) {
+		aux = aux->sig;
+	}
+	if (aux != null) {
+		return 1;
+ 	}
+	return 0;
+}
+
+c)
+Typedef struct nodo {
+	int vi, vj, costo;
+	struct nodo *sigi, *sigj;
+} nodo;
+Typedef struct nodo *TMLista;
+int esAdyacente(int i, int j, int V[]) {
+	TMLista aux;
+	aux = V[i];
+	while (aux != null && aux->vj != vj) {
+		if (aux->vi == i) {
+			aux = aux->sigi;
+		} else {
+			aux = aux->sigj;
+		}
+	}
+	if (aux != null) {
+		return 1;
+	}
+	return 0;
+}
+
+Ej 12 – Dado un digrafo almacenado en una Matriz de Adyacencia, generar la correspondiente lista
+de adyacencia.
+
+Typedef struct nodo {
+	int vertice;
+	struct nodo *sig;
+} nodo;
+Typedef struct nodo *TLista;
+void crearLista(Mat[][], Vec[], N) {
+	TLista aux, nuevo;
+	aux = *L;
+	for (i=0;i<N;i++) {
+		for (j=0;j<N;j++) {
+			if (Mat[i][j] == 1) {
+				nuevo = (TLista)malloc(sizeof(nodo));
+				nuevo->vertice = j;
+				nuevo->sig = V[i];
+				V[i] = nuevo;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
