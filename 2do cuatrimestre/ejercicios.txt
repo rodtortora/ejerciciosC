@@ -109,7 +109,27 @@ void agregar(int costo, int vi, int vj, int V[]) {
     V[vi] = nuevo;
     if (vj != vi) {
         nuevo = (TLista)malloc(sizeof(nodo));
-
+		nuevo->sig = V[vj];
+		V[vj] = nuevo;
     }
 
 }
+c)
+Typedef struct nodo {
+	int vi, vj, costo;
+	struct nodo *sigi, *sigj;
+} nodo;
+Typedef struct nodo *TMLista;
+
+void agregar(int costo, int V[], int vi, int vj) {
+	TMLista nuevo;
+	nuevo = (TMLista)malloc(sizeof(nodo));
+	nuevo->sigi = V[vi];
+	nuevo->sigj = V[vj];
+	nuevo->vi = vi;
+	nuevo->vj = vj;
+	nuevo->costo = costo;
+	V[vi] = nuevo;
+	V[vj] = nuevo;
+}
+
